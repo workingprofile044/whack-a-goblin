@@ -23,14 +23,10 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: 'assets/'
-                        }
-                    }
-                ]
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/[name][ext][query]'
+                }
             }
         ]
     },
@@ -44,9 +40,11 @@ module.exports = {
             ]
         })
     ],
-    devServer: {
-        contentBase: path.join(__dirname, 'dist'),
-        compress: true,
-        port: 9000
-    }
+devServer: {
+    static: {
+        directory: path.join(__dirname, 'dist'),
+    },
+    compress: true,
+    port: 9002
+}
 };
