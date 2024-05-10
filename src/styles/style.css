@@ -1,0 +1,33 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+#game {
+    text-align: center;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 5px;
+}
+
+.grid-cell {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    position: relative;
+}
+
+.grid-cell.active {
+    background-image: url('assets/goblin.png');
+    background-size: cover;
+}
