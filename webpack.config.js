@@ -14,7 +14,10 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'] 
+                    }
                 }
             },
             {
@@ -40,11 +43,11 @@ module.exports = {
             ]
         })
     ],
-devServer: {
-    static: {
-        directory: path.join(__dirname, 'dist'),
-    },
-    compress: true,
-    port: 9002
-}
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        compress: true,
+        port: 9003
+    }
 };
