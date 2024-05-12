@@ -38,14 +38,36 @@ function placeGoblin() {
     });
 }
 
+function moveGoblin() {
+    if (lastCell) {
+        lastCell.classList.remove('active');
+    }
+
+    const cells = Array.from(document.querySelectorAll('.grid-cell'));
+    let newIndex;
+    do {
+        newIndex = Math.floor(Math.random() * cells.length);
+    } while (cells[newIndex] === lastCell);
+
+    cells[newIndex].classList.add('active');
+    lastCell = cells[newIndex];
+
+    }
+
+
 function handleCellClick() {
     if (!this.classList.contains('active')) {
-        message.textContent = 'YOU LOSE';
-        setTimeout(resetGame, 2000);
+        alert('YOU LOSE');
+        setTimeout(function() {
+            location.reload();
+        }, 1000);
     } else {
-        placeGoblin();
+        moveGoblin();
     }
 }
+
+
+
 
 function resetGame() {
     message.textContent = '';
