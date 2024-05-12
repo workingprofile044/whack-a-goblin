@@ -29,5 +29,7 @@ body, html {
 
 .grid-cell.active {
     background-image: url('../assets/goblin.png');
-    background-position: center
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
