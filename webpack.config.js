@@ -1,12 +1,13 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require('path');
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        clean: true
     },
     module: {
         rules: [
@@ -16,26 +17,24 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env'] 
+                        presets: ['@babel/preset-env']
                     }
                 }
             },
             {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.(png|jpe?g|gif)$/i,
+                test: /\.(png|jpg|gif)$/i,
                 type: 'asset/resource',
-                generator: {
-                    filename: 'assets/[name][ext][query]'
-                }
             }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './index.html',
+            filename: 'index.html'
         }),
         new CopyWebpackPlugin({
             patterns: [
@@ -48,6 +47,7 @@ module.exports = {
             directory: path.join(__dirname, 'dist'),
         },
         compress: true,
-        port: 9003
+        port: 9000,
+        open: true
     }
 };
